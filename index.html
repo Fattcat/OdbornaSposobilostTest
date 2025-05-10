@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Test z Elektrotechniky</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f4f4f4;
+      text-align: center;
+    }
+    h1 {
+      font-size: 2em;
+      color: #333;
+    }
+    .intro {
+      margin-bottom: 20px;
+    }
+    .intro p {
+      font-size: 1.5em;
+      margin: 0;
+    }
+    .start-button {
+      padding: 20px 40px;
+      font-size: 1.5em;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .start-button:hover {
+      transform: scale(1.2);
+    }
+    .quiz-container {
+      display: none;
+      margin-top: 20px;
+    }
+    .question {
+      background: white;
+      padding: 20px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+    .question h3 {
+      margin-top: 0;
+    }
+    .results {
+      font-size: 18px;
+      font-weight: bold;
+      text-align: center;
+      padding: 15px;
+      margin-top: 20px;
+      background: #dff0d8;
+      border-radius: 8px;
+    }
+    .submit-btn {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      font-size: 18px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .submit-btn:hover {
+      background-color: #0056b3;
+    }
+    .timer {
+      font-size: 2em;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="intro">
+    <h1>Test pre Paragraf 21</h1>
+    <p>Spolu <span id="total-questions">50</span> otázok</p>
+    <button class="start-button" onclick="startTest()">Spustiť Test</button>
+  </div>
+
+  <div class="quiz-container">
+    <div class="timer" id="timer">00:00</div>
+    <form id="quizForm"></form>
+    <button class="submit-btn hidden" id="submitButton" onclick="submitQuiz()">Vyhodnotiť test</button>
+  </div>
+
+  <div class="results hidden" id="results"></div>
+
+  <script>
+    const questionsData = [
+      {
+        question: "Aké napätie je považované za veľmi nízke bezpečné napätie (SELV)?",
+        options: ["do 50 V AC alebo 120 V DC", "do 24 V AC alebo 60 V DC", "do 12 V AC alebo 30 V DC"],
+        correct: "c"
+      },
+      {
+        question: "Čo vyjadruje skratka RCD?",
+        options: ["Reziduálny prúdový istič", "Reaktívny cyklický dierovač", "Reálny cyklický dizajn"],
+        correct: "a"
+      },
+      {
+        question: "Kedy je potrebné vykonať výchoziu revíziu elektrického zariadenia?",
+        options: ["Iba po havárii", "Pred uvedením do prevádzky", "Po každom vypnutí prúdu"],
+        correct: "b"
+      },
+      {
+        question: "Aká je hlavná úloha hlavného pospájania?",
+        options: ["Zabezpečiť uzemnenie všetkých kovových častí", "Zvýšiť vodivosť vodiča", "Znížiť prúd v zariadení"],
+        correct: "a"
+      },
+      {
+        question: "Čo je to TN-C sústava?",
+        options: ["Ochranný vodič a pracovný vodič sú samostatné", "Ochranný a nulový vodič sú spojené v jednom vodiči", "Používa sa len pri 400 V inštaláciách"],
+        correct: "b"
+      },
+      {
+        question: "Aké farby má ochranný vodič?",
+        options: ["červená", "žlto-zelená", "modrá"],
+        correct: "b"
+      },
+      {
+        question: "Na čo slúži istič v elektrickej inštalácii?",
+        options: ["Na zvýšenie napätia", "Na ochranu pred prepätím", "Na ochranu pred preťažením a skratom"],
+        correct: "c"
+      },
+      {
+        question: "Ktoré zariadenie vypína obvod pri zistení rozdielového prúdu?",
+        options: ["RCD", "MCB", "Transformátor"],
+        correct: "a"
+      },
+      {
+        question: "Ktorý z nasledujúcich materiálov je najlepší vodič elektrického prúdu?",
+        options: ["Meď", "Hliník", "Železo"],
+        correct: "a"
+      },
+      {
+        question: "Čo znamená IP v označení IP44?",
+        options: ["Izolačný parameter", "Index ochrany", "Indukčný prúd"],
+        correct: "b"
+      },
+      {
+        question: "Čo predstavuje trieda ochrany I?",
+        options: ["Zariadenie má dvojitú izoláciu", "Zariadenie má uzemnenie", "Zariadenie je vodotesné"],
+        correct: "b"
+      },
+      {
+        question: "Aký je symbol uzemnenia?",
+        options: ["∿", "⏚", "Ω"],
+        correct: "b"
+      },
+      {
+        question: "Čo meria megohmmeter?",
+        options: ["Odpor", "Izolačný odpor", "Napätie"],
+        correct: "b"
+      },
+      {
+        question: "Aký je bežný menovitý prúd domáceho ističa?",
+        options: ["6 A", "16 A", "32 A"],
+        correct: "b"
+      },
+      {
+        question: "Čo je funkcia prepäťovej ochrany?",
+        options: ["Zvýšiť výkon", "Chrániť pred bleskom a prepätím", "Znížiť spotrebu energie"],
+        correct: "b"
+      },
+      {
+        question: "Ktorý vodič je označený modrou farbou?",
+        options: ["Fázový", "Ochranný", "Nulový"],
+        correct: "c"
+      },
+      {
+        question: "Čo znamená skrat?",
+        options: ["Zníženie napätia", "Neúmyselné spojenie vodičov s veľmi nízkym odporom", "Preťaženie obvodu"],
+        correct: "b"
+      },
+      {
+        question: "Čo je hlavná nevýhoda TN-C sústavy?",
+        options: ["Vyššie náklady", "Zdieľanie ochranného a pracovného vodiča", "Znížená účinnosť"],
+        correct: "b"
+      },
+      {
+        question: "Aká je jednotka elektrického odporu?",
+        options: ["Ohm", "Volt", "Ampér"],
+        correct: "a"
+      },
+      {
+        question: "Ktoré z nasledujúcich opatrení zvyšuje bezpečnosť pri práci s elektrinou?",
+        options: ["Práca vo vlhkom prostredí", "Použitie izolačných rukavíc", "Bosá práca"],
+        correct: "b"
+      },
+      {
+        question: "Ktorý typ ističa sa používa pre ochranu motorov?",
+        options: ["MCB", "MCCB", "RCD"],
+        correct: "b"
+      },
+      {
+        question: "Aká je povolená odchýlka napätia v bežnej domácej sieti 230 V?",
+        options: ["±10 %", "±5 %", "±15 %"],
+        correct: "a"
+      },
+      {
+        question: "Čo spôsobí preťaženie obvodu?",
+        options: ["Zvýšenie napätia", "Príliš veľa pripojených spotrebičov", "Skrat medzi vodičmi"],
+        correct: "b"
+      },
+      {
+        question: "Čo je ESD?",
+        options: ["Elektronická sieťová detekcia", "Elektrostatický výboj", "Efektívne spínacie zariadenie"],
+        correct: "b"
+      },
+      {
+        question: "Ako sa volá vodič, ktorý spája kovové časti a uzemnenie?",
+        options: ["Fázový", "Nulový", "Ochranný"],
+        correct: "c"
+      },
+      {
+        question: "Aké farby má fázový vodič v trojfázovej sústave?",
+        options: ["Čierna, hnedá, sivá", "Modrá, červená, biela", "Zelená, modrá, čierna"],
+        correct: "a"
+      },
+      {
+        question: "Čo je to izolačný odpor?",
+        options: ["Odpor medzi vodičom a zemou", "Odpor v ističoch", "Odpor pripojeného zariadenia"],
+        correct: "a"
+      },
+      {
+        question: "Čo znamená symbol dvojitej izolácie?",
+        options: ["Dva štvorce, jeden v druhom", "Blesk", "Zemný symbol"],
+        correct: "a"
+      },
+      {
+        question: "Ako často sa odporúča kontrola elektrickej inštalácie v domácnosti?",
+        options: ["Každých 5 rokov", "Každý rok", "Každých 10 rokov"],
+        correct: "a"
+      },
+      {
+        question: "Ktorý vodič by sa nikdy nemal prerušovať v obvode?",
+        options: ["Fázový", "Ochranný", "Nulový"],
+        correct: "b"
+      },
+ 
+      {
+        question: "Aké napätie je považované za veľmi nízke bezpečné napätie (SELV)?",
+        options: ["do 50 V AC alebo 120 V DC", "do 24 V AC alebo 60 V DC", "do 12 V AC alebo 30 V DC"],
+        correct: "c"
+      },
+      {
+        question: "Čo vyjadruje skratka RCD?",
+        options: ["Reziduálny prúdový istič", "Reaktívny cyklický dierovač", "Reálny cyklický dizajn"],
+        correct: "a"
+      },
+      {
+        question: "Kedy je potrebné vykonať výchoziu revíziu elektrického zariadenia?",
+        options: ["Iba po havárii", "Pred uvedením do prevádzky", "Po každom vypnutí prúdu"],
+        correct: "b"
+      },
+      // ... ďalšie otázky
+    ];
+
+    let timerInterval;
+    let timeElapsed = 0;
+    let quizStarted = false;
+
+    function startTest() {
+      quizStarted = true;
+      document.querySelector('.intro').style.display = 'none';
+      document.querySelector('.quiz-container').style.display = 'block';
+      startTimer();
+      loadQuestions();
+    }
+
+    function startTimer() {
+      timerInterval = setInterval(() => {
+        timeElapsed++;
+        const minutes = Math.floor(timeElapsed / 60);
+        const seconds = timeElapsed % 60;
+        document.getElementById('timer').textContent = `${pad(minutes)}:${pad(seconds)}`;
+      }, 1000);
+    }
+
+    function pad(num) {
+      return num < 10 ? `0${num}` : num;
+    }
+
+    function loadQuestions() {
+      const quizForm = document.getElementById('quizForm');
+      questionsData.forEach((q, i) => {
+        const div = document.createElement("div");
+        div.classList.add("question");
+        div.innerHTML = `<h3>${i + 1}. ${q.question}</h3>
+          ${q.options.map((opt, idx) => {
+            const letter = String.fromCharCode(97 + idx);
+            return `<label><input type="radio" name="q${i}" value="${letter}"> ${opt}</label><br>`;
+          }).join("")}`;
+        quizForm.appendChild(div);
+      });
+
+      document.getElementById('submitButton').classList.remove('hidden');
+    }
+
+    function submitQuiz() {
+      let score = 0;
+      questionsData.forEach((q, i) => {
+        const selected = document.querySelector(`input[name="q${i}"]:checked`);
+        if (selected && selected.value === q.correct) {
+          score++;
+        }
+      });
+      const percent = (score / questionsData.length * 100).toFixed(1);
+      const success = percent >= 60 ? "Úspešne" : "Neúspešne";
+      const elapsedMinutes = Math.floor(timeElapsed / 60);
+      const elapsedSeconds = timeElapsed % 60;
+
+      clearInterval(timerInterval);
+
+      document.getElementById("results").innerHTML = `
+        Získal si ${score} z ${questionsData.length} bodov (${percent} %)
+        <br>Test bol ${success}.
+        <br>Čas: ${pad(elapsedMinutes)}:${pad(elapsedSeconds)}
+      `;
+      document.getElementById("results").classList.remove('hidden');
+    }
+  </script>
+</body>
+</html>
