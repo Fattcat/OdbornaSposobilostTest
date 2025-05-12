@@ -99,175 +99,259 @@
 
   <script>
     const questionsData = [
-      {
-        question: "Aké napätie je považované za veľmi nízke bezpečné napätie (SELV)?",
-        options: ["do 50 V AC alebo 120 V DC", "do 24 V AC alebo 60 V DC", "do 12 V AC alebo 30 V DC"],
-        correct: "c"
-      },
-      {
-        question: "Čo vyjadruje skratka RCD?",
-        options: ["Reziduálny prúdový istič", "Reaktívny cyklický dierovač", "Reálny cyklický dizajn"],
-        correct: "a"
-      },
-      {
-        question: "Kedy je potrebné vykonať výchoziu revíziu elektrického zariadenia?",
-        options: ["Iba po havárii", "Pred uvedením do prevádzky", "Po každom vypnutí prúdu"],
-        correct: "b"
-      },
-      {
-        question: "Aká je hlavná úloha hlavného pospájania?",
-        options: ["Zabezpečiť uzemnenie všetkých kovových častí", "Zvýšiť vodivosť vodiča", "Znížiť prúd v zariadení"],
-        correct: "a"
-      },
-      {
-        question: "Čo je to TN-C sústava?",
-        options: ["Ochranný vodič a pracovný vodič sú samostatné", "Ochranný a nulový vodič sú spojené v jednom vodiči", "Používa sa len pri 400 V inštaláciách"],
-        correct: "b"
-      },
-      {
-        question: "Aké farby má ochranný vodič?",
-        options: ["červená", "žlto-zelená", "modrá"],
-        correct: "b"
-      },
-      {
-        question: "Na čo slúži istič v elektrickej inštalácii?",
-        options: ["Na zvýšenie napätia", "Na ochranu pred prepätím", "Na ochranu pred preťažením a skratom"],
-        correct: "c"
-      },
-      {
-        question: "Ktoré zariadenie vypína obvod pri zistení rozdielového prúdu?",
-        options: ["RCD", "MCB", "Transformátor"],
-        correct: "a"
-      },
-      {
-        question: "Ktorý z nasledujúcich materiálov je najlepší vodič elektrického prúdu?",
-        options: ["Meď", "Hliník", "Železo"],
-        correct: "a"
-      },
-      {
-        question: "Čo znamená IP v označení IP44?",
-        options: ["Izolačný parameter", "Index ochrany", "Indukčný prúd"],
-        correct: "b"
-      },
-      {
-        question: "Čo predstavuje trieda ochrany I?",
-        options: ["Zariadenie má dvojitú izoláciu", "Zariadenie má uzemnenie", "Zariadenie je vodotesné"],
-        correct: "b"
-      },
-      {
-        question: "Aký je symbol uzemnenia?",
-        options: ["∿", "⏚", "Ω"],
-        correct: "b"
-      },
-      {
-        question: "Čo meria megohmmeter?",
-        options: ["Odpor", "Izolačný odpor", "Napätie"],
-        correct: "b"
-      },
-      {
-        question: "Aký je bežný menovitý prúd domáceho ističa?",
-        options: ["6 A", "16 A", "32 A"],
-        correct: "b"
-      },
-      {
-        question: "Čo je funkcia prepäťovej ochrany?",
-        options: ["Zvýšiť výkon", "Chrániť pred bleskom a prepätím", "Znížiť spotrebu energie"],
-        correct: "b"
-      },
-      {
-        question: "Ktorý vodič je označený modrou farbou?",
-        options: ["Fázový", "Ochranný", "Nulový"],
-        correct: "c"
-      },
-      {
-        question: "Čo znamená skrat?",
-        options: ["Zníženie napätia", "Neúmyselné spojenie vodičov s veľmi nízkym odporom", "Preťaženie obvodu"],
-        correct: "b"
-      },
-      {
-        question: "Čo je hlavná nevýhoda TN-C sústavy?",
-        options: ["Vyššie náklady", "Zdieľanie ochranného a pracovného vodiča", "Znížená účinnosť"],
-        correct: "b"
-      },
-      {
-        question: "Aká je jednotka elektrického odporu?",
-        options: ["Ohm", "Volt", "Ampér"],
-        correct: "a"
-      },
-      {
-        question: "Ktoré z nasledujúcich opatrení zvyšuje bezpečnosť pri práci s elektrinou?",
-        options: ["Práca vo vlhkom prostredí", "Použitie izolačných rukavíc", "Bosá práca"],
-        correct: "b"
-      },
-      {
-        question: "Ktorý typ ističa sa používa pre ochranu motorov?",
-        options: ["MCB", "MCCB", "RCD"],
-        correct: "b"
-      },
-      {
-        question: "Aká je povolená odchýlka napätia v bežnej domácej sieti 230 V?",
-        options: ["±10 %", "±5 %", "±15 %"],
-        correct: "a"
-      },
-      {
-        question: "Čo spôsobí preťaženie obvodu?",
-        options: ["Zvýšenie napätia", "Príliš veľa pripojených spotrebičov", "Skrat medzi vodičmi"],
-        correct: "b"
-      },
-      {
-        question: "Čo je ESD?",
-        options: ["Elektronická sieťová detekcia", "Elektrostatický výboj", "Efektívne spínacie zariadenie"],
-        correct: "b"
-      },
-      {
-        question: "Ako sa volá vodič, ktorý spája kovové časti a uzemnenie?",
-        options: ["Fázový", "Nulový", "Ochranný"],
-        correct: "c"
-      },
-      {
-        question: "Aké farby má fázový vodič v trojfázovej sústave?",
-        options: ["Čierna, hnedá, sivá", "Modrá, červená, biela", "Zelená, modrá, čierna"],
-        correct: "a"
-      },
-      {
-        question: "Čo je to izolačný odpor?",
-        options: ["Odpor medzi vodičom a zemou", "Odpor v ističoch", "Odpor pripojeného zariadenia"],
-        correct: "a"
-      },
-      {
-        question: "Čo znamená symbol dvojitej izolácie?",
-        options: ["Dva štvorce, jeden v druhom", "Blesk", "Zemný symbol"],
-        correct: "a"
-      },
-      {
-        question: "Ako často sa odporúča kontrola elektrickej inštalácie v domácnosti?",
-        options: ["Každých 5 rokov", "Každý rok", "Každých 10 rokov"],
-        correct: "a"
-      },
-      {
-        question: "Ktorý vodič by sa nikdy nemal prerušovať v obvode?",
-        options: ["Fázový", "Ochranný", "Nulový"],
-        correct: "b"
-      },
  
-      {
-        question: "Aké napätie je považované za veľmi nízke bezpečné napätie (SELV)?",
-        options: ["do 50 V AC alebo 120 V DC", "do 24 V AC alebo 60 V DC", "do 12 V AC alebo 30 V DC"],
-        correct: "c"
-      },
-      {
-        question: "Čo vyjadruje skratka RCD?",
-        options: ["Reziduálny prúdový istič", "Reaktívny cyklický dierovač", "Reálny cyklický dizajn"],
-        correct: "a"
-      },
-      {
-        question: "Kedy je potrebné vykonať výchoziu revíziu elektrického zariadenia?",
-        options: ["Iba po havárii", "Pred uvedením do prevádzky", "Po každom vypnutí prúdu"],
-        correct: "b"
-      },
-      // ... ďalšie otázky
-    ];
+    {
+    question: "Aké napäťové pásmo zodpovedá veľmi vysokému napätiu (VVN)?",
+    options: ["52 kV až 220 kV", "1 kV až 52 kV", "nad 400 kV"],
+    correct: "a"
+  },
+  {
+    question: "Aký je účel pracovného príkazu B (Príkaz B)?",
+    options: ["Načasovanie údržby", "Povolenie prác na elektrickom zariadení s určením podmienok", "Zákaz vstupu na pracovisko"],
+    correct: "b"
+  },
+  {
+    question: "Aký je rozdiel medzi SELV a PELV systémami?",
+    options: ["SELV je galvanicky oddelený, PELV nie je", "PELV je bezpečnejší", "PELV má nižšie napätie"],
+    correct: "a"
+  },
+  {
+    question: "Ktorý typ ochrán sa používa pre ochranu pred dotykom živých častí v SELV systéme?",
+    options: ["Ochranný vodič PE", "Galvanické oddelenie a nízke napätie", "Zemniaci odpor"],
+    correct: "b"
+  },
+  {
+    question: "Z čoho sa skladá základný bleskozvod?",
+    options: ["Zachytávač, zvod a uzemnenie", "Ochranný vodič, istič, prúdové relé", "Kondenzátor, istič a zvod"],
+    correct: "a"
+  },
+  {
+    question: "Ktoré zariadenie znižuje riziko šírenia prepäťových impulzov po vedení?",
+    options: ["Tepelný istič", "Prepätová ochrana", "Jistič s oneskorením"],
+    correct: "b"
+  },
+  {
+    question: "Do ktorého pásma patrí napätie 230 V AC?",
+    options: ["NN – nízke napätie", "VN – vysoké napätie", "SELV napätie"],
+    correct: "a"
+  },
+  {
+    question: "Pri akom napätí končí pásmo nízkeho napätia (NN) podľa STN?",
+    options: ["230 V", "1000 V AC", "52 kV"],
+    correct: "b"
+  },
+  {
+    question: "Čo je to uzemňovač bleskozvodu?",
+    options: ["Časť bleskozvodu zaisťujúca vizuálny kontakt", "Časť odvádzajúca prúd do zeme", "Spínač na ovládanie zvodu"],
+    correct: "b"
+  },
+  {
+    question: "Kedy sa používa ochrana PELV?",
+    options: ["Len v automobilovom priemysle", "V priestoroch s rizikom dotyku živých častí", "Iba v SELV systémoch"],
+    correct: "b"
+  },
+  {
+    question: "Aké napätie majú SELV systémy podľa STN?",
+    options: ["Do 12 V AC", "Do 25 V AC alebo 60 V DC", "Do 230 V AC"],
+    correct: "b"
+  },
+  {
+    question: "Čo znamená ZVN (Zvlášť vysoké napätie)?",
+    options: ["Nad 1 kV", "Nad 220 kV", "Medzi 52 kV a 220 kV"],
+    correct: "b"
+  },
+  {
+    question: "Ktorý z nasledujúcich prvkov NIE JE súčasťou aktívneho bleskozvodu?",
+    options: ["Zvod", "Galvanický izolátor", "Zachytávač"],
+    correct: "b"
+  },
+  {
+    question: "Čo je najdôležitejšie pri montáži bleskozvodu na budovu?",
+    options: ["Vzhľad", "Spoľahlivý kontakt so zemniacim systémom", "Použitie medených skrutiek"],
+    correct: "b"
+  },
+  {
+    question: "Na čo slúži príkaz B v elektrickej prevádzke?",
+    options: ["Na vyjadrenie výstrahy pri búrke", "Na povolenie práce pod napätím alebo v blízkosti", "Na uzamknutie rozvádzača"],
+    correct: "b"
+  },
+  {
+    question: "Ktorý z nasledovných systémov je galvanicky oddelený od siete?",
+    options: ["PELV", "SELV", "TN-C"],
+    correct: "b"
+  },
+  {
+    question: "Aký typ siete má spoločný vodič pre ochranu a nulovanie?",
+    options: ["TN-C", "TT", "IT"],
+    correct: "a"
+  },
+  {
+    question: "Ktoré napätie sa považuje za bezpečné pri trvalom dotyku v suchom prostredí?",
+    options: ["400 V AC", "230 V DC", "do 50 V AC"],
+    correct: "c"
+  },
+  {
+    question: "Aká je základná požiadavka na PELV systém?",
+    options: ["Nízke napätie a pripojenie k ochrannému uzemneniu", "Nezávislé batériové napájanie", "Použitie oddelenej siete"],
+    correct: "a"
+  },
+  {
+    question: "Čo je to vonkajší LPS systém?",
+    options: ["Systém uzemnenia v budove", "Vnútorné rozvody istené proti blesku", "Zachytávač, zvod a uzemňovač mimo objektu"],
+    correct: "c"
+  },
 
+  {
+    question: "Aké napätie je považované za veľmi nízke bezpečné napätie (SELV), ktoré nezpôsobuje nebezpečenstvo elektrického šoku?",
+    options: ["do 50 V AC alebo 120 V DC", "do 24 V AC alebo 60 V DC", "do 12 V AC alebo 30 V DC"],
+    correct: "c"
+  },
+  {
+    question: "Čo označuje skratka RCD v kontexte elektrických inštalácií?",
+    options: ["Reziduálny prúdový istič", "Reaktívny cyklický dierovač", "Reálny cyklický dizajn"],
+    correct: "a"
+  },
+  {
+    question: "Kedy je povinné vykonať výchozú revíziu elektrického zariadenia podľa platných predpisov?",
+    options: ["Iba po havárii", "Pred uvedením do prevádzky", "Po každom vypnutí prúdu"],
+    correct: "b"
+  },
+  {
+    question: "Aká je primárna úloha hlavného pospájania v elektrických inštaláciách?",
+    options: ["Zabezpečiť uzemnenie všetkých kovových častí", "Zvýšiť vodivosť vodiča", "Znížiť prúd v zariadení"],
+    correct: "a"
+  },
+  {
+    question: "Aké charakteristiky popisuje sústava TN-C v elektrických inštaláciách?",
+    options: ["Ochranný vodič a pracovný vodič sú samostatné", "Ochranný a nulový vodič sú spojené v jednom vodiči", "Používa sa len pri 400 V inštaláciách"],
+    correct: "b"
+  },
+  {
+    question: "Aká farba je používaná pre označenie ochranného vodiča v elektrických inštaláciách?",
+    options: ["červená", "žlto-zelená", "modrá"],
+    correct: "b"
+  },
+  {
+    question: "Akú funkciu plní istič v elektrických inštaláciách?",
+    options: ["Na zvýšenie napätia", "Na ochranu pred prepätím", "Na ochranu pred preťažením a skratom"],
+    correct: "c"
+  },
+  {
+    question: "Ktoré zariadenie slúži na odpojenie obvodu pri zistení rozdielového prúdu?",
+    options: ["RCD", "MCB", "Transformátor"],
+    correct: "a"
+  },
+  {
+    question: "Ktorý materiál je najlepší vodič elektrického prúdu?",
+    options: ["Meď", "Hliník", "Železo"],
+    correct: "a"
+  },
+  {
+    question: "Čo znamená označenie IP v klasifikácii IP44?",
+    options: ["Izolačný parameter", "Index ochrany", "Indukčný prúd"],
+    correct: "b"
+  },
+  {
+    question: "Čo vyjadruje trieda ochrany I v kontexte elektrických zariadení?",
+    options: ["Zariadenie má dvojitú izoláciu", "Zariadenie má uzemnenie", "Zariadenie je vodotesné"],
+    correct: "b"
+  },
+  {
+    question: "Aký je medzinárodný symbol pre uzemnenie v elektrických inštaláciách?",
+    options: ["∿", "⏚", "Ω"],
+    correct: "b"
+  },
+  {
+    question: "Na čo slúži megohmmeter pri meraní elektrických inštalácií?",
+    options: ["Odpor", "Izolačný odpor", "Napätie"],
+    correct: "b"
+  },
+  {
+    question: "Aký je štandardný menovitý prúd domácich ističov v bežných elektrických inštaláciách?",
+    options: ["6 A", "16 A", "32 A"],
+    correct: "b"
+  },
+  {
+    question: "Aká je funkcia prepäťovej ochrany v elektrických systémoch?",
+    options: ["Zvýšiť výkon", "Chrániť pred bleskom a prepätím", "Znížiť spotrebu energie"],
+    correct: "b"
+  },
+  {
+    question: "Ktorý vodič je označený modrou farbou v bežných elektrických inštaláciách?",
+    options: ["Fázový", "Ochranný", "Nulový"],
+    correct: "c"
+  },
+  {
+    question: "Aké je technické pomenovanie pre situáciu, keď dochádza k neúmyselnému spojeniu vodičov s veľmi nízkym odporom?",
+    options: ["Zníženie napätia", "Neúmyselné spojenie vodičov s veľmi nízkym odporom", "Preťaženie obvodu"],
+    correct: "b"
+  },
+  {
+    question: "Ktorý z uvedených faktorov predstavuje hlavnú nevýhodu TN-C sústavy?",
+    options: ["Vyššie náklady", "Zdieľanie ochranného a pracovného vodiča", "Znížená účinnosť"],
+    correct: "b"
+  },
+  {
+    question: "Aká je jednotka elektrického odporu v súlade s medzinárodnými normami?",
+    options: ["Ohm", "Volt", "Ampér"],
+    correct: "a"
+  },
+  {
+    question: "Ktoré z nasledujúcich opatrení významne zvyšuje bezpečnosť pri práci s elektrinou?",
+    options: ["Práca vo vlhkom prostredí", "Použitie izolačných rukavíc", "Bosá práca"],
+    correct: "b"
+  },
+  {
+    question: "Ktorý typ ističa je určený na ochranu elektromotorov v priemyselných inštaláciách?",
+    options: ["MCB", "MCCB", "RCD"],
+    correct: "b"
+  },
+  {
+    question: "Aká je povolená odchýlka napätia v domácej elektrickej sieti so štandardným menovitým napätím 230 V?",
+    options: ["±10 %", "±5 %", "±15 %"],
+    correct: "a"
+  },
+  {
+    question: "Čo spôsobí preťaženie elektrického obvodu?",
+    options: ["Zvýšenie napätia", "Príliš veľa pripojených spotrebičov", "Skrat medzi vodičmi"],
+    correct: "b"
+  },
+  {
+    question: "Aký je význam skratky ESD v súvislosti s elektrickými zariadeniami?",
+    options: ["Elektronická sieťová detekcia", "Elektrostatický výboj", "Efektívne spínacie zariadenie"],
+    correct: "b"
+  },
+  {
+    question: "Aký typ vodiča spája kovové časti zariadenia s uzemnením?",
+    options: ["Fázový", "Nulový", "Ochranný"],
+    correct: "c"
+  },
+  {
+    question: "Aké farby sú používané pre označenie fázového vodiča v trojfázovej elektrickej sústave?",
+    options: ["Čierna, hnedá, sivá", "Modrá, červená, biela", "Zelená, modrá, čierna"],
+    correct: "a"
+  },
+  {
+    question: "Aký je význam izolačného odporu v elektrických inštaláciách?",
+    options: ["Odpor medzi vodičom a zemou", "Odpor v ističoch", "Odpor pripojeného zariadenia"],
+    correct: "a"
+  },
+  {
+    question: "Čo symbolizuje označenie dvojitej izolácie v technických normách?",
+    options: ["Dva štvorce, jeden v druhom", "Blesk", "Zemný symbol"],
+    correct: "a"
+  },
+  {
+    question: "Aká je odporúčaná frekvencia kontroly elektrických inštalácií v domácnostiach?",
+    options: ["Každých 5 rokov", "Každý rok", "Každých 10 rokov"],
+    correct: "a"
+  },
+  {
+    question: "Ktorý vodič by sa v elektrickom obvode nikdy nemal prerušiť?",
+    options: ["Fázový", "Ochranný", "Nulový"],
+    correct: "b"
+  }
+];
     let timerInterval;
     let timeElapsed = 0;
     let quizStarted = false;
